@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configs
-file_name="test"
+file_name="matrix"
 extension_in="c++"
 extension_out="exe"
 
