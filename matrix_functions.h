@@ -17,8 +17,8 @@ void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int ver
           matrix[j][i] += 1;
           break;
         case REMOVE:
-          matrix[i][j] = 0;
-          matrix[j][i] = 0;
+          matrix[i][j] == 0 ? matrix[i][j] = 0 : matrix[i][j] -= 1;
+          matrix[j][i] == 0 ? matrix[j][i] = 0 : matrix[j][i] -= 1;
           break;
         default:
           break;
@@ -74,4 +74,16 @@ bool isNeighbour(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int vertex2)
   vertex2 -= 1;
 
   return matrix[vertex1][vertex2] == 1 ? true : false;
+}
+
+int isMultimatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  bool result = false;
+
+  for (int i = 1; i < MATRIX_SIZE; i++)
+    for (int j = 0; j < MATRIX_SIZE; j++)
+      if (matrix[i][j] > 1)
+        return true;
+
+  return false;
 }

@@ -67,6 +67,13 @@ void handleIsVertexNeighbour(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   isNeighbourMessage(vertex1, vertex2, result);
 }
 
+void handleMultiConnectionsOnVertexPair(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  bool result = isMultimatrix(matrix);
+
+  isMultimatrixMessage(result);
+}
+
 int main()
 {
   int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
@@ -89,6 +96,9 @@ int main()
       break;
     case 4:
       handleIsVertexNeighbour(matrix);
+      break;
+    case 5:
+      handleMultiConnectionsOnVertexPair(matrix);
       break;
     case 11:
       handleConnectVertex(matrix);
