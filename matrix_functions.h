@@ -13,8 +13,8 @@ void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int ver
         switch (operation)
         {
         case ADD:
-          matrix[i][j] = 1;
-          matrix[j][i] = 1;
+          matrix[i][j] += 1;
+          matrix[j][i] += 1;
           break;
         case REMOVE:
           matrix[i][j] = 0;
