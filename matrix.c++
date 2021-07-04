@@ -49,6 +49,14 @@ void handleAllVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   connectionsOnAllVertexMessage(resultVertex);
 }
 
+void handleMaxMatrixConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int maxConnections = vertexMaxConnections(matrix);
+  int minConnections = vertexMinConnections(matrix);
+
+  maxAndMinConnectionsOnMatrix(maxConnections, minConnections);
+}
+
 int main()
 {
   int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
@@ -61,16 +69,19 @@ int main()
     switch (menuOption)
     {
     case 1:
-      handleConnectVertex(matrix);
-      break;
-    case 2:
-      handleDisconnectVertex(matrix);
-      break;
-    case 3:
       handleVertexConnections(matrix);
       break;
-    case 4:
+    case 2:
       handleAllVertexConnections(matrix);
+      break;
+    case 3:
+      handleMaxMatrixConnections(matrix);
+      break;
+    case 11:
+      handleConnectVertex(matrix);
+      break;
+    case 12:
+      handleDisconnectVertex(matrix);
       break;
     default:
       break;

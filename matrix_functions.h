@@ -43,3 +43,27 @@ void connectionsOnAllVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int resultMatr
   for (int i = 0; i < MATRIX_SIZE; i++)
     resultMatrix[i] = connectionsOnVertex(matrix, i);
 }
+
+int vertexMaxConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int highestAmountOfConnections = 0;
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    connectionsOnVertex(matrix, i) > highestAmountOfConnections
+        ? highestAmountOfConnections = connectionsOnVertex(matrix, i)
+        : highestAmountOfConnections = highestAmountOfConnections;
+
+  return highestAmountOfConnections;
+}
+
+int vertexMinConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int lowestAmountOfConnections = 0;
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    connectionsOnVertex(matrix, i) < lowestAmountOfConnections
+        ? lowestAmountOfConnections = connectionsOnVertex(matrix, i)
+        : lowestAmountOfConnections = lowestAmountOfConnections;
+
+  return lowestAmountOfConnections;
+}
