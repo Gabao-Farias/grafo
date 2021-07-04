@@ -29,11 +29,17 @@ void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int ver
   }
 }
 
-// int connectionsOnVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex)
-// {
-//   vertex = vertex - 1;
-//   for (int i = 0; i < MATRIX_SIZE; i++)
-//   {
-//     matrix
-//   }
-// }
+int connectionsOnVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex)
+{
+  vertex = vertex - 1;
+  int connections = 0;
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    matrix[vertex][i] == 1 ? connections += 1 : connections += 0;
+  return connections;
+}
+
+void connectionsOnAllVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int resultMatrix[MATRIX_SIZE])
+{
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    resultMatrix[i] = connectionsOnVertex(matrix, i);
+}

@@ -12,6 +12,8 @@ void printMainMenu()
   printf("[0] Sair\n");
   printf("[1] Conectar vértices\n");
   printf("[2] Desconectar vértices\n");
+  printf("[3] Grau de um vértice\n");
+  printf("[4] Grau de todos os vértices\n");
 }
 
 int getMenuOption()
@@ -41,4 +43,17 @@ void printMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 void genericSuccessfullOperationMessage()
 {
   printf("Operação realizada com sucesso!\n\n");
+}
+
+void connectionsOnVertexMessage(int vertex, int connections)
+{
+  printf("O vértice %d tem grau %d\n", vertex, connections);
+}
+
+void connectionsOnAllVertexMessage(int resultVertex[MATRIX_SIZE])
+{
+  for (int i = 0; i < MATRIX_SIZE; i++)
+  {
+    printf("Vértice: %d | Grau: %d\n", i + 1, resultVertex[i]);
+  }
 }

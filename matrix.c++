@@ -31,6 +31,24 @@ void handleDisconnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
     printMatrix(matrix);
 }
 
+void handleVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int vertex1 = handleInsertFirstVertex();
+
+  int connections = connectionsOnVertex(matrix, vertex1);
+
+  connectionsOnVertexMessage(vertex1, connections);
+}
+
+void handleAllVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int resultVertex[MATRIX_SIZE] = {0};
+
+  connectionsOnAllVertex(matrix, resultVertex);
+
+  connectionsOnAllVertexMessage(resultVertex);
+}
+
 int main()
 {
   int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
@@ -47,6 +65,12 @@ int main()
       break;
     case 2:
       handleDisconnectVertex(matrix);
+      break;
+    case 3:
+      handleVertexConnections(matrix);
+      break;
+    case 4:
+      handleAllVertexConnections(matrix);
       break;
     default:
       break;
