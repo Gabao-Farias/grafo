@@ -31,7 +31,7 @@ void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int ver
 
 int connectionsOnVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex)
 {
-  vertex = vertex - 1;
+  vertex -= 1;
   int connections = 0;
   for (int i = 0; i < MATRIX_SIZE; i++)
     matrix[vertex][i] == 1 ? connections += 1 : connections += 0;
@@ -66,4 +66,12 @@ int vertexMinConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         : lowestAmountOfConnections = lowestAmountOfConnections;
 
   return lowestAmountOfConnections;
+}
+
+bool isNeighbour(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int vertex2)
+{
+  vertex1 -= 1;
+  vertex2 -= 1;
+
+  return matrix[vertex1][vertex2] == 1 ? true : false;
 }

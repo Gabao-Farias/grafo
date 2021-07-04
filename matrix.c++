@@ -54,7 +54,17 @@ void handleMaxMatrixConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   int maxConnections = vertexMaxConnections(matrix);
   int minConnections = vertexMinConnections(matrix);
 
-  maxAndMinConnectionsOnMatrix(maxConnections, minConnections);
+  maxAndMinConnectionsOnMatrixMessage(maxConnections, minConnections);
+}
+
+void handleIsVertexNeighbour(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int vertex1 = handleInsertFirstVertex();
+  int vertex2 = handleInsertOtherVertex();
+
+  bool result = isNeighbour(matrix, vertex1, vertex2);
+
+  isNeighbourMessage(vertex1, vertex2, result);
 }
 
 int main()
@@ -76,6 +86,9 @@ int main()
       break;
     case 3:
       handleMaxMatrixConnections(matrix);
+      break;
+    case 4:
+      handleIsVertexNeighbour(matrix);
       break;
     case 11:
       handleConnectVertex(matrix);

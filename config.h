@@ -1,4 +1,4 @@
-#define MATRIX_SIZE 6
+#define MATRIX_SIZE 9
 #define DEBUG_MODE true
 
 #define EDIT 'E'

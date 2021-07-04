@@ -13,6 +13,7 @@ void printMainMenu()
   printf("[1] Grau de um vértice\n");
   printf("[2] Grau de todos os vértices\n");
   printf("[3] Grau máximo e mínimo de um grafo\n");
+  printf("[4] Verificar se vértices são vizinhos\n");
   printf("-----EDIÇÃO GRAFO-----\n");
   printf("[11] Conectar vértices\n");
   printf("[12] Desconectar vértices\n");
@@ -60,8 +61,15 @@ void connectionsOnAllVertexMessage(int resultVertex[MATRIX_SIZE])
   }
 }
 
-void maxAndMinConnectionsOnMatrix(int max, int min)
+void maxAndMinConnectionsOnMatrixMessage(int max, int min)
 {
   printf("Grau máximo: %d\n", max);
   printf("Grau mínimo: %d\n", min);
+}
+
+void isNeighbourMessage(int vertex1, int vertex2, int isNeighbour)
+{
+  isNeighbour
+      ? printf("Os vértices %d e %d são vizinhos.\n", vertex1, vertex2)
+      : printf("Os vértices %d e %d não são vizinhos.\n", vertex1, vertex2);
 }
