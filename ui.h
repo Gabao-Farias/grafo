@@ -12,9 +12,10 @@ void printMainMenu()
   printf("[0] Sair\n");
   printf("[1] Grau de um vértice\n");
   printf("[2] Grau de todos os vértices\n");
-  printf("[3] Grau máximo e mínimo de um grafo\n");
+  printf("[3] Grau máximo e mínimo do grafo\n");
   printf("[4] Verificar se vértices são vizinhos\n");
   printf("[5] Verificar se o grafo é multigrafo\n");
+  printf("[8] Verificar todos os vizinhos de um vértice\n");
   printf("-----EDIÇÃO GRAFO-----\n");
   printf("[11] Conectar vértices\n");
   printf("[12] Desconectar vértices\n");
@@ -80,4 +81,16 @@ void isMultimatrixMessage(bool isMultimatrix)
   isMultimatrix
       ? printf("O grafo é um multigrafo.\n")
       : printf("O grafo não é um multigrafo.\n");
+}
+
+void allNeighboursOfVertexMessage(int neighbours[MATRIX_SIZE], int vertex)
+{
+  printf("Os vizinhos do vértice %d são: ", vertex);
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+  {
+    if (neighbours[i] == 1)
+      printf("%d | ", i + 1);
+  }
+  printf("\n");
 }

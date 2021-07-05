@@ -74,6 +74,16 @@ void handleMultiConnectionsOnVertexPair(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   isMultimatrixMessage(result);
 }
 
+void handleAllNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  int vertex1 = handleInsertFirstVertex();
+  int neighbours[MATRIX_SIZE] = {0};
+
+  allNeighboursOfVertex(matrix, neighbours, vertex1);
+
+  allNeighboursOfVertexMessage(neighbours, vertex1);
+}
+
 int main()
 {
   int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
@@ -99,6 +109,9 @@ int main()
       break;
     case 5:
       handleMultiConnectionsOnVertexPair(matrix);
+      break;
+    case 8:
+      handleAllNeighboursOfVertex(matrix);
       break;
     case 11:
       handleConnectVertex(matrix);

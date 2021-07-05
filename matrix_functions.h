@@ -87,3 +87,12 @@ int isMultimatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 
   return false;
 }
+
+void allNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int neighbours[MATRIX_SIZE], int vertex)
+{
+  vertex -= 1;
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    if (matrix[vertex][i] >= 1)
+      neighbours[i] = 1;
+}
