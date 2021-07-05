@@ -37,6 +37,7 @@ int getMenuOption()
 
 void printMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
+  printf("\n");
   for (int i = 0; i < MATRIX_SIZE; i++)
   {
     printf("| ");
@@ -47,6 +48,7 @@ void printMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
     }
     printf("\n");
   }
+  printf("\n");
 }
 
 void genericSuccessfullOperationMessage()
@@ -117,4 +119,9 @@ void allUnconnectedVertexesMessage(int unconnectedVertexes[MATRIX_SIZE])
       printf("%d | ", i + 1);
 
   printf("\n");
+}
+
+void warningUnavailableVertexMessage()
+{
+  printf("Operação negada: operação com vértice inexistente!\n");
 }

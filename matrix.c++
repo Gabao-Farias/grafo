@@ -19,27 +19,45 @@ void handleCreateVertex(int createdVertexes[MATRIX_SIZE])
   genericSuccessfullOperationMessage();
 }
 
-void handleConnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void handleConnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   int vertex1 = handleInsertFirstVertex();
   int vertex2 = handleInsertOtherVertex();
 
-  manipulateVertex(matrix, vertex1, vertex2, ADD);
-
-  genericSuccessfullOperationMessage();
+  int response = manipulateVertex(matrix, createdVertexes, vertex1, vertex2, ADD);
+  switch (response)
+  {
+  case 0:
+    genericSuccessfullOperationMessage();
+    break;
+  case 1:
+    warningUnavailableVertexMessage();
+    break;
+  default:
+    break;
+  }
 
   if (DEBUG_MODE)
     printMatrix(matrix);
 }
 
-void handleDisconnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void handleDisconnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   int vertex1 = handleInsertFirstVertex();
   int vertex2 = handleInsertOtherVertex();
 
-  manipulateVertex(matrix, vertex1, vertex2, REMOVE);
-
-  genericSuccessfullOperationMessage();
+  int response = manipulateVertex(matrix, createdVertexes, vertex1, vertex2, REMOVE);
+  switch (response)
+  {
+  case 0:
+    genericSuccessfullOperationMessage();
+    break;
+  case 1:
+    warningUnavailableVertexMessage();
+    break;
+  default:
+    break;
+  }
 
   if (DEBUG_MODE)
     printMatrix(matrix);
@@ -160,10 +178,10 @@ int main()
       handleCreateVertex(createdVertexes);
       break;
     case 12:
-      handleConnectVertex(matrix);
+      handleConnectVertex(matrix, createdVertexes);
       break;
     case 13:
-      handleDisconnectVertex(matrix);
+      handleDisconnectVertex(matrix, createdVertexes);
       break;
     default:
       break;

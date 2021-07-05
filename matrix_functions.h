@@ -5,33 +5,29 @@ void createVertex(int createdVertexes[MATRIX_SIZE], int vertex)
   createdVertexes[vertex - 1] = 1;
 }
 
-void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int vertex2, char operation)
+int manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE], int vertex1, int vertex2, char operation)
 {
   vertex1 = vertex1 - 1;
   vertex2 = vertex2 - 1;
-  for (int i = 0; i < MATRIX_SIZE; i++)
+
+  if ((createdVertexes[vertex1] == 0) || (createdVertexes[vertex2] == 0))
+    return 1;
+
+  switch (operation)
   {
-    for (int j = 0; j < MATRIX_SIZE; j++)
-    {
-      if (i == vertex1 && j == vertex2)
-      {
-        switch (operation)
-        {
-        case ADD:
-          matrix[i][j] += 1;
-          matrix[j][i] += 1;
-          break;
-        case REMOVE:
-          matrix[i][j] == 0 ? matrix[i][j] = 0 : matrix[i][j] -= 1;
-          matrix[j][i] == 0 ? matrix[j][i] = 0 : matrix[j][i] -= 1;
-          break;
-        default:
-          break;
-        }
-        return;
-      }
-    }
+  case ADD:
+    matrix[vertex1][vertex2] += 1;
+    matrix[vertex2][vertex1] += 1;
+    break;
+  case REMOVE:
+    matrix[vertex1][vertex2] == 0 ? matrix[vertex1][vertex2] = 0 : matrix[vertex1][vertex2] -= 1;
+    matrix[vertex2][vertex1] == 0 ? matrix[vertex2][vertex1] = 0 : matrix[vertex2][vertex1] -= 1;
+    break;
+  default:
+    break;
   }
+
+  return 0;
 }
 
 int connectionsOnVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex)
