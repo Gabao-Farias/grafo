@@ -1,5 +1,10 @@
 #include "config.h"
 
+void createVertex(int createdVertexes[MATRIX_SIZE], int vertex)
+{
+  createdVertexes[vertex - 1] = 1;
+}
+
 void manipulateVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex1, int vertex2, char operation)
 {
   vertex1 = vertex1 - 1;
@@ -95,4 +100,24 @@ void allNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int neighbours[
   for (int i = 0; i < MATRIX_SIZE; i++)
     if (matrix[vertex][i] >= 1)
       neighbours[i] = 1;
+}
+
+void allUnconnectedVertexes(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE], int unconnectedVertexes[MATRIX_SIZE])
+{
+  bool hasConnection = false;
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+  {
+    if (createdVertexes[i] == 1)
+    {
+      hasConnection = false;
+
+      for (int j = 0; j < MATRIX_SIZE; j++)
+        if (matrix[i][j] == 1)
+          hasConnection = true;
+
+      if (!hasConnection)
+        unconnectedVertexes[i] = 1;
+    }
+  }
 }

@@ -15,10 +15,14 @@ void printMainMenu()
   printf("[3] Grau máximo e mínimo do grafo\n");
   printf("[4] Verificar se vértices são vizinhos\n");
   printf("[5] Verificar se o grafo é multigrafo\n");
+  printf("[6] Verificar se existe caminho entre 3 vértices\n");
+  printf("[7] Verificar se o caminho entre 3 vértices é um ciclo\n");
   printf("[8] Verificar todos os vizinhos de um vértice\n");
-  printf("-----EDIÇÃO GRAFO-----\n");
-  printf("[11] Conectar vértices\n");
-  printf("[12] Desconectar vértices\n");
+  printf("[10] Verificar se há vértices sem conexões\n");
+  printf("\n-----EDIÇÃO GRAFO-----\n");
+  printf("[11] Criar vértice\n");
+  printf("[12] Conectar vértices\n");
+  printf("[13] Desconectar vértices\n");
 }
 
 int getMenuOption()
@@ -88,9 +92,29 @@ void allNeighboursOfVertexMessage(int neighbours[MATRIX_SIZE], int vertex)
   printf("Os vizinhos do vértice %d são: ", vertex);
 
   for (int i = 0; i < MATRIX_SIZE; i++)
-  {
     if (neighbours[i] == 1)
       printf("%d | ", i + 1);
-  }
+
+  printf("\n");
+}
+
+void unnavailableFeatureMessage()
+{
+  printf("Por se tratar de um grafo não dirigido, a funcionalidade está indisponível\n");
+}
+
+void warningVertexAlreadyExistsMessage(int vertex)
+{
+  printf("O vértice %d já existe!\n", vertex);
+}
+
+void allUnconnectedVertexesMessage(int unconnectedVertexes[MATRIX_SIZE])
+{
+  printf("Os vértice sem conexão são: ");
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    if (unconnectedVertexes[i] == 1)
+      printf("%d | ", i + 1);
+
   printf("\n");
 }

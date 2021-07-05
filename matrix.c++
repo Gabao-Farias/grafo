@@ -5,6 +5,20 @@
 #include "matrix_functions.h"
 #include "connectVertexUI.h"
 
+void handleCreateVertex(int createdVertexes[MATRIX_SIZE])
+{
+  int vertex1 = handleInsertFirstVertex();
+
+  if (createdVertexes[vertex1 - 1] == 1)
+  {
+    warningVertexAlreadyExistsMessage(vertex1);
+    return;
+  }
+
+  createVertex(createdVertexes, vertex1);
+  genericSuccessfullOperationMessage();
+}
+
 void handleConnectVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
   int vertex1 = handleInsertFirstVertex();
@@ -74,6 +88,16 @@ void handleMultiConnectionsOnVertexPair(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   isMultimatrixMessage(result);
 }
 
+void handlePathBetweenVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  unnavailableFeatureMessage();
+}
+
+void handleIsPathACycle(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  unnavailableFeatureMessage();
+}
+
 void handleAllNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
   int vertex1 = handleInsertFirstVertex();
@@ -84,8 +108,18 @@ void handleAllNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   allNeighboursOfVertexMessage(neighbours, vertex1);
 }
 
+void handleUnconnectedVertexes(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
+{
+  int unconnectedVertexes[MATRIX_SIZE] = {0};
+
+  allUnconnectedVertexes(matrix, createdVertexes, unconnectedVertexes);
+
+  allUnconnectedVertexesMessage(unconnectedVertexes);
+}
+
 int main()
 {
+  int createdVertexes[MATRIX_SIZE] = {0};
   int matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
 
   int menuOption = 1;
@@ -110,13 +144,25 @@ int main()
     case 5:
       handleMultiConnectionsOnVertexPair(matrix);
       break;
+    case 6:
+      handlePathBetweenVertex(matrix);
+      break;
+    case 7:
+      handleIsPathACycle(matrix);
+      break;
     case 8:
       handleAllNeighboursOfVertex(matrix);
       break;
+    case 10:
+      handleUnconnectedVertexes(matrix, createdVertexes);
+      break;
     case 11:
-      handleConnectVertex(matrix);
+      handleCreateVertex(createdVertexes);
       break;
     case 12:
+      handleConnectVertex(matrix);
+      break;
+    case 13:
       handleDisconnectVertex(matrix);
       break;
     default:
