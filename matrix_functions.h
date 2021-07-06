@@ -98,6 +98,47 @@ void allNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int neighbours[
       neighbours[i] = 1;
 }
 
+int getFirstVertexIndex(int createdVertexes[MATRIX_SIZE])
+{
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    if (createdVertexes[i] == 1)
+      return i;
+  return -1;
+}
+
+bool allVertexesVisited(int visitedVertexes[MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
+{
+  for (int i = 0; i < MATRIX_SIZE; i++)
+    if (visitedVertexes[i] == 0 && createdVertexes[i] == 1)
+      return false;
+  return true;
+}
+
+void depthWalkMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE], int visitedVertexes[MATRIX_SIZE], int navitgationPointerGraph)
+{
+  visitedVertexes[navitgationPointerGraph] = 1;
+
+  int neighbours[MATRIX_SIZE] = {0};
+  allNeighboursOfVertex(matrix, neighbours, navitgationPointerGraph + 1);
+
+  for (int i = 0; i < MATRIX_SIZE; i++)
+  {
+    if (neighbours[i] == 1 && visitedVertexes[i] == 0)
+      depthWalkMatrix(matrix, createdVertexes, visitedVertexes, i);
+  }
+  return;
+}
+
+bool isFullConnected(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
+{
+  int visitedVertexes[MATRIX_SIZE] = {0};
+  int firstVertexIndex = getFirstVertexIndex(createdVertexes);
+
+  depthWalkMatrix(matrix, createdVertexes, visitedVertexes, firstVertexIndex);
+
+  return allVertexesVisited(visitedVertexes, createdVertexes);
+}
+
 void allUnconnectedVertexes(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE], int unconnectedVertexes[MATRIX_SIZE])
 {
   bool hasConnection = false;

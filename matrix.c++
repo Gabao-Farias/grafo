@@ -126,6 +126,13 @@ void handleAllNeighboursOfVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   allNeighboursOfVertexMessage(neighbours, vertex1);
 }
 
+void handleIsFullConnected(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
+{
+  bool result = isFullConnected(matrix, createdVertexes);
+
+  isFullConnectedMessage(result);
+}
+
 void handleUnconnectedVertexes(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   int unconnectedVertexes[MATRIX_SIZE] = {0};
@@ -133,6 +140,11 @@ void handleUnconnectedVertexes(int matrix[MATRIX_SIZE][MATRIX_SIZE], int created
   allUnconnectedVertexes(matrix, createdVertexes, unconnectedVertexes);
 
   allUnconnectedVertexesMessage(unconnectedVertexes);
+}
+
+void handleShowMatrix(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+{
+  printMatrix(matrix);
 }
 
 int main()
@@ -171,6 +183,9 @@ int main()
     case 8:
       handleAllNeighboursOfVertex(matrix);
       break;
+    case 9:
+      handleIsFullConnected(matrix, createdVertexes);
+      break;
     case 10:
       handleUnconnectedVertexes(matrix, createdVertexes);
       break;
@@ -182,6 +197,9 @@ int main()
       break;
     case 13:
       handleDisconnectVertex(matrix, createdVertexes);
+      break;
+    case 14:
+      handleShowMatrix(matrix);
       break;
     default:
       break;

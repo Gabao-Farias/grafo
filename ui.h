@@ -18,11 +18,13 @@ void printMainMenu()
   printf("[6] Verificar se existe caminho entre 3 vértices\n");
   printf("[7] Verificar se o caminho entre 3 vértices é um ciclo\n");
   printf("[8] Verificar todos os vizinhos de um vértice\n");
+  printf("[9] Verificar se é um grafo conexo\n");
   printf("[10] Verificar se há vértices sem conexões\n");
   printf("\n-----EDIÇÃO GRAFO-----\n");
   printf("[11] Criar vértice\n");
   printf("[12] Conectar vértices\n");
   printf("[13] Desconectar vértices\n");
+  printf("[14] Mostrar matriz\n");
 }
 
 int getMenuOption()
@@ -110,9 +112,16 @@ void warningVertexAlreadyExistsMessage(int vertex)
   printf("O vértice %d já existe!\n", vertex);
 }
 
+void isFullConnectedMessage(bool result)
+{
+  result
+      ? printf("O grafo é conexo!\n")
+      : printf("O grafo não é conexo!\n");
+}
+
 void allUnconnectedVertexesMessage(int unconnectedVertexes[MATRIX_SIZE])
 {
-  printf("Os vértice sem conexão são: ");
+  printf("Os vértices sem conexão são: ");
 
   for (int i = 0; i < MATRIX_SIZE; i++)
     if (unconnectedVertexes[i] == 1)
