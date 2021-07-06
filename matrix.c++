@@ -72,19 +72,19 @@ void handleVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
   connectionsOnVertexMessage(vertex1, connections);
 }
 
-void handleAllVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void handleAllVertexConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   int resultVertex[MATRIX_SIZE] = {0};
 
-  connectionsOnAllVertex(matrix, resultVertex);
+  connectionsOnAllVertex(matrix, resultVertex, createdVertexes);
 
-  connectionsOnAllVertexMessage(resultVertex);
+  connectionsOnAllVertexMessage(resultVertex, createdVertexes);
 }
 
-void handleMaxMatrixConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void handleMaxMinMatrixConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
-  int maxConnections = vertexMaxConnections(matrix);
-  int minConnections = vertexMinConnections(matrix);
+  int maxConnections = vertexMaxConnections(matrix, createdVertexes);
+  int minConnections = vertexMinConnections(matrix, createdVertexes);
 
   maxAndMinConnectionsOnMatrixMessage(maxConnections, minConnections);
 }
@@ -163,10 +163,10 @@ int main()
       handleVertexConnections(matrix);
       break;
     case 2:
-      handleAllVertexConnections(matrix);
+      handleAllVertexConnections(matrix, createdVertexes);
       break;
     case 3:
-      handleMaxMatrixConnections(matrix);
+      handleMaxMinMatrixConnections(matrix, createdVertexes);
       break;
     case 4:
       handleIsVertexNeighbour(matrix);

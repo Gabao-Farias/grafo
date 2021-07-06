@@ -39,32 +39,34 @@ int connectionsOnVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int vertex)
   return connections;
 }
 
-void connectionsOnAllVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int resultMatrix[MATRIX_SIZE])
+void connectionsOnAllVertex(int matrix[MATRIX_SIZE][MATRIX_SIZE], int resultMatrix[MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   for (int i = 0; i < MATRIX_SIZE; i++)
-    resultMatrix[i] = connectionsOnVertex(matrix, i);
+    resultMatrix[i] = connectionsOnVertex(matrix, i + 1);
 }
 
-int vertexMaxConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+int vertexMaxConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   int highestAmountOfConnections = 0;
 
   for (int i = 0; i < MATRIX_SIZE; i++)
-    connectionsOnVertex(matrix, i) > highestAmountOfConnections
-        ? highestAmountOfConnections = connectionsOnVertex(matrix, i)
-        : highestAmountOfConnections = highestAmountOfConnections;
+    if (createdVertexes[i] == 1)
+      connectionsOnVertex(matrix, i) > highestAmountOfConnections
+          ? highestAmountOfConnections = connectionsOnVertex(matrix, i)
+          : highestAmountOfConnections = highestAmountOfConnections;
 
   return highestAmountOfConnections;
 }
 
-int vertexMinConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+int vertexMinConnections(int matrix[MATRIX_SIZE][MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
-  int lowestAmountOfConnections = 0;
+  int lowestAmountOfConnections = 999;
 
   for (int i = 0; i < MATRIX_SIZE; i++)
-    connectionsOnVertex(matrix, i) < lowestAmountOfConnections
-        ? lowestAmountOfConnections = connectionsOnVertex(matrix, i)
-        : lowestAmountOfConnections = lowestAmountOfConnections;
+    if (createdVertexes[i] == 1)
+      connectionsOnVertex(matrix, i + 1) < lowestAmountOfConnections
+          ? lowestAmountOfConnections = connectionsOnVertex(matrix, i + 1)
+          : lowestAmountOfConnections = lowestAmountOfConnections;
 
   return lowestAmountOfConnections;
 }

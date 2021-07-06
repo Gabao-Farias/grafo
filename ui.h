@@ -63,11 +63,12 @@ void connectionsOnVertexMessage(int vertex, int connections)
   printf("O vértice %d tem grau %d\n", vertex, connections);
 }
 
-void connectionsOnAllVertexMessage(int resultVertex[MATRIX_SIZE])
+void connectionsOnAllVertexMessage(int resultVertex[MATRIX_SIZE], int createdVertexes[MATRIX_SIZE])
 {
   for (int i = 0; i < MATRIX_SIZE; i++)
   {
-    printf("Vértice: %d | Grau: %d\n", i + 1, resultVertex[i]);
+    if (createdVertexes[i] == 1)
+      printf("Vértice: %d | Grau: %d\n", i + 1, resultVertex[i]);
   }
 }
 
